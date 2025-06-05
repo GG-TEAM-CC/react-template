@@ -2,10 +2,43 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Project Structure (Clean Architecture Example)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+src/
+  domain/
+    models/
+      Todo.ts            # Entity definition for Todo
+    services/
+      FetchTodos.ts      # Use case for fetching todos
+      TodoRepository.ts  # Repository for todos
+  data/                 # (optional, for real API/data sources)
+  presentation/
+    components/
+      TodoList.tsx       # UI component to display todos
+    hooks/
+      UseTodos.ts        # Custom hook to use todos in components
+    pages/
+      HomePage.tsx       # Main page displaying the todo list
+  shared/
+    types/               # Shared types/interfaces
+  assets/                # Static assets (images, icons, etc.)
+  styles/                # CSS/SCSS files
+  utils/                 # Utility functions
+  config/                # App configuration files
+  contexts/              # React context providers
+
+public/                  # Static public files
+
+App.tsx                  # App entry point
+main.tsx                 # ReactDOM render
+vite-env.d.ts            # Vite environment types
+```
+
+- **domain/**: Business logic, entities, use cases, and repositories.
+- **presentation/**: React components, hooks, and pages (UI layer).
+- **shared/**: Types and interfaces shared across layers.
+- **assets/**, **styles/**, **utils/**, **config/**, **contexts/**: Usual React project folders for static files, styling, utilities, configuration, and context providers.
 
 ## Expanding the ESLint configuration
 
