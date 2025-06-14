@@ -1,0 +1,36 @@
+name: CI and CD workflow
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Repository checkout
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  
+
+      # 3. Dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # 4. Build
+      - name: Build project
+        run: |
+          npm run build
+
+      # 5. Deploy GitHub Pages
+      - name: Deploy to GitHub Pages
+        run: |
+          npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
