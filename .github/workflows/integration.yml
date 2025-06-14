@@ -1,4 +1,5 @@
-name: CI and CD workflow
+name: Continuous Integration Workflow
+
 on:
   push:
     branches:
